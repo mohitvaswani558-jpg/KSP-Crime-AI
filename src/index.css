@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-light: #ffffff;
+  --color-cyber-dark: #111827; /* gray-900 */
+  --color-cyber-red: #dc2626; /* red-600 */
+  
+  --shadow-neon-red: 0 0 10px rgba(220, 38, 38, 0.25), 0 0 20px rgba(220, 38, 38, 0.1);
+  --shadow-neon-light: 0 4px 20px rgba(0, 0, 0, 0.05);
+  
+  --font-display: "Orbitron", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Space Grotesk", sans-serif;
+}
+
+/* Base custom styles */
+body {
+  background-color: #fcfdfe;
+  font-family: var(--font-sans);
+  color: #374151; /* gray-700 */
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(220, 38, 38, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(220, 38, 38, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.005) 0%, transparent 60%);
+}
+
+/* Custom cyber scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(252, 253, 254, 0.95);
+  border-left: 1px solid rgba(220, 38, 38, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(220, 38, 38, 0.2);
+  border-radius: 3px;
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(220, 38, 38, 0.5);
+  box-shadow: 0 0 12px rgba(220, 38, 38, 0.2);
+}
+
+/* Glassmorphism panel styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 38, 38, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03);
+}
+
+.glass-panel:hover {
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+.glass-panel-red {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 38, 38, 0.22);
+  box-shadow: 0 4px 24px rgba(220, 38, 38, 0.03), inset 0 0 12px rgba(220, 38, 38, 0.01);
+}
+
+/* Pulsing radar effects */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.radar-ring {
+  animation: radar-pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Grid overlay background */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(220, 38, 38, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.015) 1px, transparent 1px);
+}
+
+/* CRT scanlines effect */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(220, 38, 38, 0.02) 50%), linear-gradient(90deg, rgba(220, 38, 38, 0.015), rgba(255, 255, 255, 0.005), rgba(220, 38, 38, 0.015));
+  z-index: 2;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Typing indicator cursor */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.8s infinite;
+  color: var(--color-cyber-red);
+  margin-left: 2px;
+}
